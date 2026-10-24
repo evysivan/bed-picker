@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>המיטה החדשה של משפחת סיון</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Rubik:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: a soft sunrise band over linen, then one ranked board, a side-by-side compare table, the scoring rules and the stores. */
+/* Deliberately one bright morning look in every theme: no dark variant. */
+:root{
+  --bg:#fffaf4; --surface:#ffffff; --ink:#45405e; --muted:#8a84a0; --line:#f0e7ec;
+  --lav:#8b80e0; --lav-soft:#f2effd; --peach:#ffc9a6; --peach-soft:#fff2e8; --sun:#ffe2a6; --sky:#eef4ff;
+  --sage:#5f9e82; --sage-soft:#eaf6ef; --rose:#c97683; --rose-soft:#fdeef0; --apricot:#c07a4c; --wood:#f5dcc7;
+  --display:"Fredoka","Varela Round","Rubik",sans-serif;
+  --body:"Rubik","Assistant","Segoe UI",Arial,sans-serif;
+  --radius:20px;
+  color-scheme:light;
+}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:400;font-size:16px;line-height:1.6;
+  background-image:
+    repeating-linear-gradient(0deg,color-mix(in srgb,var(--peach) 9%,transparent) 0 1px,transparent 1px 4px),
+    repeating-linear-gradient(90deg,color-mix(in srgb,var(--lav) 6%,transparent) 0 1px,transparent 1px 5px);}
+.app{min-height:100%}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:500;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(1.5rem,1.2rem + 1.2vw,2rem)}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--lav);outline-offset:2px;border-radius:6px}
+
+/* sunrise band */
+.hero{position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 14% 30%,#fffdf6 0,var(--sun) 7%,color-mix(in srgb,var(--sun) 45%,transparent) 14%,transparent 38%),
+    linear-gradient(180deg,var(--sky) 0%,var(--lav-soft) 40%,var(--peach-soft) 80%,#fff6ee 100%);
+  border-bottom:1px solid var(--line)}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:56px;pointer-events:none;
+  background:
+    radial-gradient(120% 100% at 30% 100%,color-mix(in srgb,var(--surface) 70%,transparent) 0 40%,transparent 41%),
+    radial-gradient(90% 100% at 85% 100%,color-mix(in srgb,var(--surface) 55%,transparent) 0 45%,transparent 46%)}
+.hero-in{position:relative;z-index:1;padding-block:40px 56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);align-items:center;gap:24px}
+.hero-text{display:grid;gap:12px;min-width:0}
+.hero-art{width:100%;max-width:400px;height:auto;justify-self:center}
+
+/* illustrations */
+.il-shadow{fill:var(--lav);opacity:.12}
+.il-head{fill:var(--lav-soft);stroke:color-mix(in srgb,var(--lav) 30%,transparent);stroke-width:1.5}
+.il-line{fill:none;stroke:color-mix(in srgb,var(--lav) 22%,transparent);stroke-width:1.2}
+.il-tuft{fill:color-mix(in srgb,var(--lav) 40%,transparent)}
+.il-frame,.il-stand{fill:var(--wood)}
+.il-leg{fill:color-mix(in srgb,var(--apricot) 45%,var(--wood))}
+.il-mat{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.il-pillow{fill:var(--surface);stroke:color-mix(in srgb,var(--lav) 28%,transparent);stroke-width:1.5}
+.il-crease{fill:none;stroke:color-mix(in srgb,var(--lav) 20%,transparent);stroke-width:1.2;stroke-linecap:round}
+.il-cushion{fill:var(--peach)}
+.il-cushion2{fill:var(--sage-soft);stroke:color-mix(in srgb,var(--sage) 30%,transparent);stroke-width:1.2}
+.il-btn{fill:var(--surface);opacity:.85}
+.il-fold{fill:var(--surface);opacity:.55}
+.il-stitch{fill:none;stroke:var(--surface);stroke-width:1.5;stroke-dasharray:4 5;opacity:.9}
+.il-draw{fill:none;stroke:color-mix(in srgb,var(--apricot) 35%,transparent);stroke-width:1.2}
+.il-knob{fill:var(--apricot);opacity:.55}
+.il-glow{fill:var(--sun);opacity:.45}
+.il-shade{fill:var(--sun);stroke:color-mix(in srgb,var(--apricot) 30%,transparent);stroke-width:1.2}
+.il-stem{fill:color-mix(in srgb,var(--apricot) 50%,transparent)}
+.il-pot{fill:var(--rose-soft);stroke:color-mix(in srgb,var(--rose) 30%,transparent);stroke-width:1.2}
+.il-leaf{fill:color-mix(in srgb,var(--sage) 55%,var(--surface))}
+.il-z{fill:var(--lav);opacity:.5;font-family:var(--display);font-weight:500}
+.il-z1{animation:drift 5s ease-in-out infinite}
+.il-z2{animation:drift 5s ease-in-out 1.2s infinite}
+@keyframes drift{50%{transform:translateY(-5px)}}
+.pillows{width:150px;max-width:100%;height:auto}
+.eyebrow{font-size:.8rem;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.hero h1{font-size:clamp(2.2rem,1.6rem + 3vw,3.6rem);line-height:1.1;font-weight:500;color:var(--ink)}
+.name,.store h3,.cmp .h-name{font-family:var(--display);font-weight:500}
+.btn,.seg button{font-family:var(--display);font-weight:500}
+.lede{max-width:56ch;color:var(--muted);font-size:1.05rem}
+.stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.stat{background:color-mix(in srgb,var(--surface) 75%,transparent);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.88rem;font-variant-numeric:tabular-nums}
+.stat b{font-weight:700}
+
+main.wrap{display:grid;gap:40px;padding-block:28px 140px}
+
+/* tabs */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:color-mix(in srgb,var(--surface) 88%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.tabs-in{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:10px}
+.tabs-in::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:0;background:transparent;border-radius:999px;padding:8px 16px;cursor:pointer;
+  font-family:var(--display);font-weight:500;font-size:.98rem;color:var(--muted);white-space:nowrap}
+.tabs button:hover{color:var(--ink)}
+.tabs button[aria-selected="true"]{background:var(--lav-soft);color:var(--lav)}
+
+/* plan */
+.plan{display:grid;gap:28px}
+.plan-group{display:grid;gap:12px}
+.plan-group h3{font-size:1.15rem;display:flex;align-items:center;gap:8px}
+.plan-group h3 .n{font-family:var(--body);font-size:.85rem;color:var(--muted);font-weight:400}
+.stops{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.stop{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:8px;align-content:start}
+.stop.done{opacity:.7;background:color-mix(in srgb,var(--sage-soft) 50%,var(--surface))}
+.stop h4{margin:0;font-family:var(--display);font-weight:500;font-size:1.1rem}
+.stop .addr{font-size:.95rem}
+.stop .addr small{display:block;color:var(--muted);font-size:.8rem}
+.stop .sub{color:var(--muted);font-size:.86rem}
+.stop .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.waze{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-family:var(--display);font-weight:500;
+  background:var(--lav);color:var(--surface);border-radius:999px;padding:7px 16px}
+.waze:hover{filter:brightness(1.06)}
+.plan-group h3 .dot{width:12px;height:12px;border-radius:50%;background:var(--zc);flex:0 0 auto}
+.stop{border-top:3px solid var(--zc,var(--line))}
+
+/* map */
+.map-wrap{position:relative;width:100%;aspect-ratio:1000/558;max-width:100%}
+.map-canvas{position:absolute;inset:0;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.map-canvas svg{width:100%;height:100%;display:block}
+.m-sea{fill:var(--sky)}
+.m-land{fill:color-mix(in srgb,var(--peach-soft) 70%,var(--surface))}
+.m-carmel{fill:color-mix(in srgb,var(--sage-soft) 90%,var(--surface))}
+.m-coast{fill:none;stroke:color-mix(in srgb,var(--lav) 40%,transparent);stroke-width:2.5;stroke-linejoin:round}
+.m-wave{fill:none;stroke:color-mix(in srgb,var(--lav) 22%,transparent);stroke-width:2;stroke-linecap:round}
+.m-lbl{font-family:var(--display);font-weight:500;font-size:22px;fill:color-mix(in srgb,var(--ink) 45%,transparent)}
+.m-lbl.sea{fill:color-mix(in srgb,var(--lav) 65%,transparent);font-size:24px}
+.m-lbl.small{font-size:17px}
+.pin{position:absolute;width:36px;height:44px;transform:translate(-50%,-100%);border:0;background:none;padding:0;cursor:pointer;z-index:2}
+.pin svg{width:100%;height:100%;display:block;filter:drop-shadow(0 3px 4px color-mix(in srgb,var(--ink) 25%,transparent));transition:transform .15s}
+.pin:hover svg,.pin[aria-expanded="true"] svg{transform:translateY(-3px) scale(1.08)}
+.pin.done{opacity:.55}
+.pin .pb{fill:var(--zc);stroke:var(--surface);stroke-width:2.5}
+.pin .pc{fill:var(--surface)}
+.pin .pn{font-family:var(--display);font-size:12px;font-weight:600;fill:var(--zc)}
+.pop{position:absolute;z-index:4;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px;
+  box-shadow:0 10px 24px -10px color-mix(in srgb,var(--lav) 55%,transparent);display:grid;gap:4px;width:max-content;max-width:min(240px,70vw);
+  transform:translate(var(--tx,-50%),calc(-100% - 52px))}
+.pop b{font-family:var(--display);font-weight:500;font-size:1rem}
+.pop span{font-size:.82rem;color:var(--muted)}
+.pop a{font-size:.85rem;font-weight:500}
+section{display:grid;gap:16px;min-width:0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
+.sec-note{color:var(--muted);max-width:70ch;font-size:.95rem}
+
+/* view switch */
+.seg{display:flex;flex-wrap:wrap;gap:4px;background:var(--lav-soft);border-radius:999px;padding:4px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:6px 14px;cursor:pointer;font-weight:600;font-size:.92rem;color:var(--muted)}
+.seg button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px color-mix(in srgb,var(--ink) 12%,transparent)}
+.seg .n{font-weight:500;opacity:.7;margin-inline-start:4px;font-variant-numeric:tabular-nums}
+
+/* ranked board */
+.board{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 10px 30px -18px color-mix(in srgb,var(--lav) 45%,transparent)}
+.row{display:grid;grid-template-columns:28px 84px minmax(0,1.5fr) 96px minmax(0,3.2fr) 78px 34px;
+  grid-template-areas:"pick thumb who price crits total more";align-items:center;gap:14px;padding:14px 18px;border-top:1px solid var(--line)}
+.thumb{grid-area:thumb;width:84px;height:84px;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--line);
+  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:2px}
+.links{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.site{display:inline-flex;align-items:center;gap:5px;font-size:.8rem;font-weight:500;text-decoration:none;color:var(--lav);
+  border:1px solid color-mix(in srgb,var(--lav) 35%,transparent);border-radius:999px;padding:2px 11px;background:var(--surface)}
+.site:hover{background:var(--lav-soft)}
+.site svg{transform:scaleX(-1)}
+.thumb img{width:100%;height:100%;object-fit:contain;display:block}
+.thumb.duo img{object-fit:cover}
+.thumb.ph{background:var(--lav-soft);place-items:center}
+.thumb.ph .pillows{width:70px}
+.entry:first-child .row{border-top:0}
+.entry.top .row{background:linear-gradient(270deg,color-mix(in srgb,var(--sun) 22%,transparent),transparent 60%)}
+.pick{grid-area:pick;display:grid;place-items:center}
+.pick input{width:20px;height:20px;accent-color:var(--lav);cursor:pointer}
+.who{grid-area:who;min-width:0;display:grid;gap:2px}
+.name{font-weight:700;font-size:1.05rem;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.rk{font-family:var(--display);color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
+.meta{color:var(--muted);font-size:.86rem;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.chip{display:inline-block;border-radius:999px;padding:1px 9px;font-size:.76rem;font-weight:600;background:var(--lav-soft);color:var(--lav);white-space:nowrap}
+.chip.k-mattress{background:var(--lav-soft);color:var(--lav)}
+.chip.k-bed{background:var(--peach-soft);color:var(--apricot)}
+.chip.k-set,.chip.k-combo{background:var(--sage-soft);color:var(--sage)}
+.chip.ghost{background:transparent;border:1px dashed var(--line);color:var(--muted)}
+.price{grid-area:price;font-variant-numeric:tabular-nums;font-weight:600}
+.price small{display:block;color:var(--muted);font-weight:400;font-size:.76rem;line-height:1.3}
+.crits{grid-area:crits;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.crit{display:grid;gap:2px;min-width:0}
+.crit .lb{font-size:.72rem;line-height:1.3;color:var(--muted);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crit .v{font-size:.95rem;line-height:1.2;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink)}
+.crit .bar{margin-top:3px}
+.crit.na .v{color:var(--muted);font-weight:400}
+.bar{height:5px;border-radius:99px;background:var(--lav-soft);overflow:hidden}
+.bar i{display:block;height:100%;width:calc(var(--v) * 100%);border-radius:inherit;background:linear-gradient(90deg,var(--peach),var(--lav))}
+.crit.heavy .lb{color:var(--ink);font-weight:600}
+.total{grid-area:total;display:grid;justify-items:center;gap:2px;border-radius:14px;padding:6px 4px}
+.total b{font-family:var(--display);font-size:1.7rem;line-height:1;font-weight:500;font-variant-numeric:tabular-nums}
+.total small{font-size:.7rem;color:var(--muted)}
+.total.hi{background:var(--sage-soft)} .total.hi b{color:var(--sage)}
+.total.mid{background:var(--peach-soft)} .total.mid b{color:var(--apricot)}
+.total.lo{background:var(--rose-soft)} .total.lo b{color:var(--rose)}
+.total.part{border:1px dashed var(--line);text-align:center;line-height:1.3;padding:8px 4px}
+.total.part small:first-child{color:var(--ink);font-weight:500}
+.more{grid-area:more;border:1px solid var(--line);background:transparent;border-radius:10px;width:32px;height:32px;cursor:pointer;display:grid;place-items:center;color:var(--muted)}
+.more svg{transition:transform .2s}
+.more[aria-expanded="true"] svg{transform:rotate(180deg)}
+.detail{padding:4px 18px 18px 18px;padding-inline-start:60px;display:grid;gap:14px;background:color-mix(in srgb,var(--lav-soft) 35%,transparent);border-top:1px dashed var(--line)}
+.detail h3{font-size:1.05rem;margin-top:12px}
+.kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px 20px;margin:0}
+.kv div{min-width:0}
+.kv dt{font-size:.75rem;color:var(--muted)}
+.kv dd{margin:0;overflow-wrap:anywhere}
+.pc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.pc ul{margin:4px 0 0;padding-inline-start:18px}
+.pc .t{font-size:.78rem;font-weight:700;letter-spacing:.03em}
+.pc .pro .t{color:var(--sage)} .pc .con .t{color:var(--rose)}
+.note{font-style:italic;color:var(--muted)}
+a{color:var(--lav)}
+
+.empty{padding:40px 24px;text-align:center;display:grid;gap:10px;justify-items:center;color:var(--muted)}
+.empty h3{color:var(--ink);font-size:1.3rem}
+.empty p{max-width:52ch}
+.pillow{width:84px;height:44px;border-radius:22px 22px 18px 18px;background:linear-gradient(180deg,var(--surface),var(--lav-soft));border:1px solid var(--line);box-shadow:inset 0 -6px 10px -6px color-mix(in srgb,var(--lav) 30%,transparent)}
+
+/* compare */
+.cmp-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.cmp{border-collapse:separate;border-spacing:0;width:100%;min-width:100%;font-size:.94rem}
+.cmp th,.cmp td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:start;vertical-align:top;min-width:170px}
+.cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
+.cmp tbody th{position:sticky;inset-inline-start:0;background:var(--surface);color:var(--muted);font-weight:600;font-size:.82rem;min-width:110px;width:110px;z-index:1}
+.cmp thead th{background:var(--lav-soft);vertical-align:bottom}
+.cmp thead th:first-child{position:sticky;inset-inline-start:0;z-index:2}
+.cmp .h-name{font-weight:700;font-size:1rem;display:block}
+.cmp .h-img{display:flex;gap:4px;margin-bottom:8px}
+.cmp .h-img img{flex:1 1 0;min-width:0;height:120px;object-fit:contain;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.cmp .h-store{color:var(--muted);font-weight:400;font-size:.82rem}
+.cmp .x{float:inline-end;border:0;background:transparent;cursor:pointer;color:var(--muted);font-size:1.1rem;line-height:1;padding:2px 4px}
+.cmp td.best{background:var(--sage-soft);font-weight:700}
+.cmp td.best::after{content:" · הכי טוב";font-weight:500;font-size:.75rem;color:var(--sage)}
+.cmp .num{font-variant-numeric:tabular-nums}
+.cmp tr.sum td{font-family:var(--display);font-size:1.35rem}
+.cmp tr.group th{color:var(--ink);font-family:var(--display);font-size:1rem;background:color-mix(in srgb,var(--peach-soft) 60%,var(--surface))}
+.cmp tr.group td{background:color-mix(in srgb,var(--peach-soft) 60%,var(--surface))}
+
+/* method */
+.weights{display:grid;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.w{display:grid;grid-template-columns:90px minmax(0,1fr) 44px;align-items:center;gap:12px}
+.w .wl{font-weight:600}
+.w .wb{height:14px;border-radius:99px;background:var(--lav-soft);overflow:hidden}
+.w .wb i{display:block;height:100%;width:calc(var(--v) * 100%);background:linear-gradient(90deg,var(--peach),var(--lav));border-radius:inherit}
+.w .wn{font-variant-numeric:tabular-nums;text-align:end;color:var(--muted)}
+.w .wd{grid-column:2/4;font-size:.85rem;color:var(--muted);margin-top:-6px}
+.rules{margin:0;padding-inline-start:20px;display:grid;gap:6px;max-width:75ch;color:var(--muted)}
+.rules b{color:var(--ink)}
+
+/* stores */
+.stores{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.store{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:8px;align-content:start}
+.store h3{font-size:1.15rem}
+.store .addr{color:var(--muted);font-size:.88rem}
+.store .rev{font-size:.88rem}
+.store dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;margin:4px 0 0;font-size:.88rem}
+.store dt{color:var(--muted)}
+.store dd{margin:0}
+.store .scores{display:flex;gap:6px;flex-wrap:wrap}
+
+/* compare tray */
+.tray{position:fixed;inset:auto 0 0 0;z-index:20;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));padding-top:12px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line);
+  box-shadow:0 -10px 30px -20px color-mix(in srgb,var(--lav) 60%,transparent)}
+.tray-in{max-width:1120px;margin-inline:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.tray-list{display:flex;gap:6px;flex-wrap:wrap;flex:1 1 220px;min-width:0}
+.tray-list .chip{max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.btn{border:0;border-radius:999px;padding:9px 20px;font-weight:700;cursor:pointer;background:var(--lav);color:var(--surface)}
+.btn[disabled]{opacity:.45;cursor:default}
+.btn.soft{background:transparent;color:var(--muted);border:1px solid var(--line);font-weight:600}
+
+@media (max-width:1040px){.crits{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 12px}}
+@media (max-width:780px){
+  .row{grid-template-columns:24px 68px minmax(0,1fr) auto;grid-template-areas:"pick thumb who total" "pick thumb price more" "crits crits crits crits";gap:10px 12px;padding:14px}
+  .thumb{width:68px;height:68px}
+  .price{display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+  .price small{display:inline}
+  .more{justify-self:end}
+  .crits{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 14px}
+  .detail{padding-inline-start:14px;padding-inline-end:14px}
+  .hero-in{padding-block:28px 52px;grid-template-columns:minmax(0,1fr)}
+  .hero-art{max-width:320px}
+  .w{grid-template-columns:72px minmax(0,1fr) 40px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="app" dir="rtl" lang="he">
+  <header class="hero">
+    <div class="wrap hero-in">
+      <div class="hero-text">
+        <p class="eyebrow">מיטה ומזרן · חיפה והקריות</p>
+        <h1>המיטה החדשה של משפחת סיון</h1>
+        <p class="lede">כל דגם שבדקנו, אונליין ובחנויות, במקום אחד ומדורג לפי מה שחשוב לנו: קודם כל נוחות, אחריה נראות ושירות.</p>
+        <div class="stats" id="stats"></div>
+      </div>
+      <svg class="hero-art" viewBox="0 0 380 240" role="img" aria-label="איור של מיטה עם כריות ושמיכה">
+        <defs><linearGradient id="gBlanket" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--peach-soft)"/><stop offset="1" style="stop-color:var(--peach)"/></linearGradient></defs>
+        <ellipse class="il-shadow" cx="190" cy="226" rx="178" ry="9"/>
+        <circle class="il-glow" cx="33" cy="104" r="34"/>
+        <rect class="il-stem" x="31" y="118" width="4" height="32" rx="2"/>
+        <path class="il-shade" d="M18 120 L48 120 L42 94 L24 94 Z"/>
+        <rect class="il-stand" x="8" y="150" width="50" height="64" rx="8"/>
+        <path class="il-draw" d="M14 180 H52"/>
+        <circle class="il-knob" cx="33" cy="166" r="2.5"/><circle class="il-knob" cx="33" cy="196" r="2.5"/>
+        <rect class="il-stand" x="322" y="150" width="50" height="64" rx="8"/>
+        <path class="il-draw" d="M328 180 H366"/>
+        <circle class="il-knob" cx="347" cy="166" r="2.5"/><circle class="il-knob" cx="347" cy="196" r="2.5"/>
+        <ellipse class="il-leaf" cx="340" cy="112" rx="7" ry="16" transform="rotate(-22 340 112)"/>
+        <ellipse class="il-leaf" cx="356" cy="110" rx="7" ry="17" transform="rotate(20 356 110)"/>
+        <ellipse class="il-leaf" cx="348" cy="104" rx="6" ry="18"/>
+        <rect class="il-pot" x="336" y="126" width="24" height="24" rx="6"/>
+        <rect class="il-head" x="78" y="38" width="224" height="140" rx="30"/>
+        <rect class="il-line" x="90" y="50" width="200" height="116" rx="22"/>
+        <g><circle class="il-tuft" cx="110" cy="72" r="3"/><circle class="il-tuft" cx="150" cy="72" r="3"/><circle class="il-tuft" cx="190" cy="72" r="3"/><circle class="il-tuft" cx="230" cy="72" r="3"/><circle class="il-tuft" cx="270" cy="72" r="3"/>
+           <circle class="il-tuft" cx="130" cy="96" r="3"/><circle class="il-tuft" cx="170" cy="96" r="3"/><circle class="il-tuft" cx="210" cy="96" r="3"/><circle class="il-tuft" cx="250" cy="96" r="3"/></g>
+        <rect class="il-leg" x="74" y="202" width="10" height="18" rx="3"/><rect class="il-leg" x="296" y="202" width="10" height="18" rx="3"/>
+        <rect class="il-frame" x="62" y="176" width="256" height="30" rx="10"/>
+        <rect class="il-mat" x="66" y="140" width="248" height="40" rx="14"/>
+        <g>
+          <path class="il-pillow" d="M92 146 C86 126 92 108 112 106 L166 104 C186 104 190 124 184 146 C160 152 116 152 92 146 Z"/>
+          <path class="il-crease" d="M106 128 C128 132 150 130 172 125"/>
+        </g>
+        <g transform="translate(104 0)">
+          <path class="il-pillow" d="M92 146 C86 126 92 108 112 106 L166 104 C186 104 190 124 184 146 C160 152 116 152 92 146 Z"/>
+          <path class="il-crease" d="M106 128 C128 132 150 130 172 125"/>
+        </g>
+        <rect class="il-cushion2" x="128" y="122" width="44" height="34" rx="14" transform="rotate(8 150 139)"/>
+        <rect class="il-cushion" x="168" y="116" width="58" height="42" rx="17" transform="rotate(-6 197 137)"/>
+        <circle class="il-btn" cx="197" cy="137" r="3"/>
+        <path fill="url(#gBlanket)" d="M58 160 C120 149 260 149 322 160 L324 206 C250 215 130 215 56 206 Z"/>
+        <path class="il-fold" d="M58 160 C120 149 260 149 322 160 L322 172 C260 162 120 162 58 172 Z"/>
+        <path class="il-stitch" d="M66 196 C140 205 240 205 314 196"/>
+        <text class="il-z il-z1" x="252" y="30" font-size="18">z</text>
+        <text class="il-z il-z2" x="270" y="16" font-size="24">z</text>
+      </svg>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="חלקי העמוד">
+    <div class="wrap tabs-in" role="tablist" id="tabs">
+      <button type="button" role="tab" data-tab="rank">הדירוג</button>
+      <button type="button" role="tab" data-tab="parts">החלקים</button>
+      <button type="button" role="tab" data-tab="plan">התכנית</button>
+      <button type="button" role="tab" data-tab="method">איך מחושב הציון</button>
+      <button type="button" role="tab" data-tab="stores">החנויות</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="rank" data-panel="rank" aria-labelledby="rank-h">
+      <div class="sec-head"><h2 id="rank-h">הדירוג</h2></div>
+      <p class="sec-note" id="rankNote"></p>
+      <div class="board" id="board"></div>
+    </section>
+
+    <section id="compare" aria-labelledby="cmp-h" hidden>
+      <div class="sec-head"><h2 id="cmp-h">השוואה</h2></div>
+      <p class="sec-note">הערך הטוב ביותר בכל שורה מסומן בירוק. אפשר להסיר דגם מההשוואה עם ×.</p>
+      <div class="cmp-scroll"><table class="cmp" id="cmpTable"></table></div>
+    </section>
+
+    <section id="parts" data-panel="parts" aria-labelledby="parts-h" hidden>
+      <div class="sec-head">
+        <h2 id="parts-h">החלקים</h2>
+        <div class="seg" role="tablist" id="views" aria-label="איזה חלק"></div>
+      </div>
+      <p class="sec-note" id="viewNote"></p>
+      <div class="board" id="partsBoard"></div>
+    </section>
+
+    <section id="plan" data-panel="plan" aria-labelledby="plan-h" hidden>
+      <div class="sec-head"><h2 id="plan-h">התכנית</h2></div>
+      <p class="sec-note">החנויות שעוד צריך לראות, עם כתובת וניווט. KUALA לא ברשימה כי היא חנות אינטרנטית. אחרי ביקור, כותבים ל-Claude "ביקרנו ב..." והחנות עוברת לביקרנו.</p>
+      <div id="planMap" class="map-wrap"></div>
+      <div id="planList" class="plan"></div>
+    </section>
+
+    <section id="method" data-panel="method" aria-labelledby="m-h" hidden>
+      <div class="sec-head"><h2 id="m-h">איך מחושב הציון</h2></div>
+      <div class="weights" id="weights"></div>
+      <ul class="rules">
+        <li><b>נוחות ונראות</b> הם הדירוג שלנו מ-1 עד 10, אחרי ששכבנו על הדגם וראינו אותו.</li>
+        <li><b>שירות</b> מתחיל מהביקורות על החנות ומתעדכן לפי איך קיבלו אותנו בביקור.</li>
+        <li><b>מחיר</b> מחושב לבד: הדגם הזול בקבוצה מקבל 10, והשאר לפי היחס. דגם שעולה פי 2 מקבל 5.</li>
+        <li><b>אחריות</b> לוקחת בחשבון שנות אחריות ותקופת ניסיון בבית.</li>
+        <li><b>מיקום</b> הוא כמה קל להגיע לחנות. משקל נמוך, כי לא אכפת לנו לנסוע.</li>
+        <li>דגם שעוד לא נוסה מקבל <b>ציון חלקי</b>, שמחושב רק מהקריטריונים שכבר יש לו.</li>
+        <li><b>רק פתרון מלא מקבל ציון כולל:</b> מזרן ומיטה ביחד. מיטה או מזרן לבד מופיעים בחלקים, מדורגים מול אותו סוג, בלי ציון כולל.</li>
+        <li><b>שילוב מזרן ומיטה:</b> הנוחות היא 85% מהמזרן ו-15% מהמיטה. הנראות כולה מהמיטה, כי המזרן מכוסה. האחריות 70% מהמזרן, השירות ממוצע, המיקום לפי החנות הפחות נוחה, והמחיר הוא הסכום.</li>
+        <li><b>חבילה במחיר מוזל:</b> כשחנות מוכרת מיטה ומזרן מסוימים ביחד בהנחה, השילוב שלהם מקבל את מחיר החבילה במקום הסכום.</li>
+      </ul>
+    </section>
+
+    <section id="stores" data-panel="stores" aria-labelledby="s-h" hidden>
+      <div class="sec-head"><h2 id="s-h">החנויות</h2></div>
+      <div class="stores" id="storeList"></div>
+    </section>
+  </main>
+
+  <div class="tray" id="tray" hidden>
+    <div class="tray-in">
+      <div class="tray-list" id="trayList"></div>
+      <button class="btn soft" id="trayClear" type="button">ניקוי</button>
+      <button class="btn" id="trayGo" type="button">השוואה</button>
+    </div>
+  </div>
+</div>
+
+<script type="application/json" id="snapshot">{"stores": [{"address": "נחום חת 9", "area": "מת\"ם, חיפה", "delivery": "עד 14 יום לפריטים מהמלאי", "hours": "א'–ה' 9:30–20:00, ו' 9:30–14:00", "lat": 32.7846, "lng": 34.959, "location": 9, "name": "רהיטי בן חיים", "notes": "מייצרים מיטות במפעל בחיפה מ-1960.", "order": 5, "reviews": "4.8/5 · 349 בגוגל (לפי האתר); 9.1 · 335 ב-Izi", "service": 9, "trial": "אין", "url": "https://benhaim-online.co.il/", "warranty": 7, "warrantyNote": "5–10 שנים על מזרנים, שנה על מיטות. פריט מהתצוגה בלי אחריות ובלי החזרה", "waze": "נחום חת 9, חיפה", "zone": "מת\"ם", "zoneOrder": 3, "id": "benhaim"}, {"address": "דרך חיפה 44, מתחם רדיזיין", "area": "קרית אתא", "hours": "א'–ה' 9:00–21:00, ו' 9:00–14:00, מוצ\"ש סגור", "lat": 32.8066, "lng": 35.074, "location": 8, "mapUrl": "https://share.google/EwNVde74EgHGMEmRw", "name": "אירופלקס", "notes": "מציינים צוות סבלני ויחס אישי. ציון השירות התחלתי, מהביקורות.", "order": 2, "phone": "077-230-8598", "reviews": "10 · 228 ביקורות (מדד חיפה והקריות)", "service": 9.5, "trial": "אין", "url": "https://www.aeroflex.co.il/", "warranty": 6, "warrantyNote": "לברר בחנות", "waze": "דרך חיפה 44, קרית אתא", "zone": "מפרץ חיפה וקריית אתא", "zoneOrder": 1, "id": "euroflex"}, {"address": "מכלף 7", "area": "צ׳ק פוסט, חיפה", "lat": 32.7858, "lng": 35.0335, "location": 9, "name": "אוורסט ענק מזרנים ומיטות", "notes": "מיטות ומזרנים באותו מקום.", "order": 3, "reviews": "9.2 · 77 ביקורות", "service": 8, "trial": "אין", "warranty": 6, "warrantyNote": "לברר בחנות", "waze": "מכלף 7, חיפה", "zone": "צ׳ק פוסט", "zoneOrder": 2, "id": "everest"}, {"address": "שלמה בן יוסף 13", "area": "צ׳ק פוסט, חיפה", "delivery": "לפי הביקורות: משלוח והרכבה מהירים ונקיים", "hours": "א'–ה' 10:00–19:00, ו' 10:00–13:30", "lat": 32.7878, "lng": 35.0325, "location": 9, "mapUrl": "https://share.google/KOmpT7vy0qaqFXsxd", "name": "רהיטי אילנית", "notes": "אפשרות טובה בעיקר למיטה.", "order": 4, "phone": "04-842-0763 · 050-853-2763", "reviews": "9.8 · 53 ביקורות", "service": 8.5, "trial": "אין", "url": "https://ilanitfurniture.co.il/", "warranty": 6, "warrantyNote": "לברר בחנות", "waze": "שלמה בן יוסף 13, חיפה", "zone": "צ׳ק פוסט", "zoneOrder": 2, "id": "ilanit"}, {"address": "חנות פופ-אפ: הראשונים 1, בית חירות", "area": "אונליין", "delivery": "משלוח חינם; הכנסה הביתה והרכבה בתוספת", "hours": "א'–ה' 10:00–18:00, ו' 10:00–14:00", "location": 5, "name": "KUALA", "notes": "אין אולם תצוגה בצפון. ציון השירות זמני עד שתהיה לנו חוויה איתם.", "online": true, "order": 1, "reviews": "לא נמצאו ביקורות עצמאיות של לקוחות", "service": 6, "trial": "100 לילות, החזרה בחינם לפי האתר", "url": "https://kualastyle.com/", "warranty": 8, "warrantyNote": "לא עקבי: 'לכל החיים' בדף המזרנים, שנה בתקנון. לבקש בכתב", "id": "kuala"}, {"address": "מתחם חוצות המפרץ, צומת וולקן", "area": "חיפה", "hours": "א'–ה' 10:00–20:00, ו' 9:00–13:00", "lat": 32.8094, "lng": 35.0544, "location": 9, "mapUrl": "https://share.google/KsJ6cBVtTqPfBS2aD", "name": "פולירון, חנות המפעל", "notes": "מחירי מפעל, ייעוץ מקצועי לפי הביקורות.", "order": 1, "phone": "073-758-5080", "reviews": "9.7 · 57 ביקורות; 8.6 ב-Easy", "service": 8.5, "trial": "אין", "url": "https://www.polyron.co.il/branches/", "warranty": 6, "warrantyNote": "לברר בחנות", "waze": "פולירון חוצות המפרץ חיפה", "zone": "מפרץ חיפה וקריית אתא", "zoneOrder": 1, "id": "polyron"}, {"address": "יהודה איתן 5, מתחם אדמירלטי", "area": "חיפה", "delivery": "7–14 ימי עסקים", "hours": "א'–ה' 9:30–20:30, ו' 9:30–14:00, מוצ\"ש עד 22:30", "lat": 32.8162, "lng": 35.0505, "location": 9, "mapUrl": "https://maps.app.goo.gl/HXZ5XCJkUy8Q196z6", "name": "רהיטי הסיטי", "notes": "מיטות ומזרנים (ספוג, קפיצים, ויסקו). ציון השירות זמני, עד שנבקר.", "order": 3, "phone": "*2129", "reviews": "לא נמצאו ביקורות לסניף הזה; ביקורת אחת חיובית על הרשת בדפי זהב", "service": 7, "trial": "לא צוין", "url": "https://www.rcity.co.il/branch/%D7%A1%D7%A0%D7%99%D7%A3-%D7%97%D7%99%D7%A4%D7%94/", "warranty": 7, "warrantyNote": "5 שנים על כל המוצרים לפי האתר", "waze": "רהיטי הסיטי יהודה איתן 5 חיפה", "zone": "מפרץ חיפה וקריית אתא", "zoneOrder": 1, "id": "rcity"}], "items": [{"addedAt": "2026-10-24T16:10:00Z", "cons": ["כל המידות הופיעו 'אזל או לא זמין'"], "delivery": "עד 30 ימי עסקים. משלוח חינם בלי הכנסה והרכבה", "height": "ראש מיטה 100 ס\"מ, מסגרת 35 ס\"מ", "image": "img/kuala-atle.jpg", "kind": "bed", "looks": 9, "materials": "ריפוד בד אריג בגוון בז' טבעי, שכבת נוחות אקרילית", "name": "ATLE", "price": 5175, "priceNote": "מבצע (במקום ₪6,900), כולל ארגז מצעים. בלי ארגז: ₪4,463", "pros": ["מסגרת צרה, תופסת מעט מקום"], "size": "180×200, עם ארגז מצעים", "specs": [["סגנון", "סקנדינבי, קווים נקיים"], ["ראש מיטה", "רוחב 190 ס\"מ, עובי 15 ס\"מ"], ["מסגרת", "רוחב 15 ס\"מ"], ["בסיס", "לייסטים מעץ אורן, מרווח 10–15 ס\"מ"], ["מזרן", "לא כלול"]], "status": "candidate", "storeId": "kuala", "trial": "אין ניסיון; ביטול בכל שלב עם החזר מלא", "url": "https://kualastyle.com/products/atle?variant=49099801133211", "warranty": 5, "warrantyNote": "12 חודשים", "id": "kuala-atle"}, {"addedAt": "2026-10-24T14:40:00Z", "cons": ["כל המידות הופיעו 'אזל או לא זמין' (מכירה מוקדמת)"], "delivery": "עד 30 ימי עסקים. משלוח חינם בלי הכנסה והרכבה", "height": "ראש מיטה 110 ס\"מ, חזית 33 ס\"מ, רגליים 5 ס\"מ", "image": "img/kuala-banyan.jpg", "kind": "bed", "looks": 7, "materials": "מסגרת עץ לביד, ריפוד בד אריג/יוטה בגוון קרם", "name": "BANYAN", "price": 5055, "priceNote": "מבצע (במקום ₪6,740), כולל ארגז מצעים. בלי ארגז: ₪4,343", "pros": ["הכי זולה מבין המיטות עם ארגז", "בסיס נסתר, מראה מרחף"], "size": "180×200, עם ארגז מצעים", "specs": [["סגנון", "ראש מיטה כפול ומעוצב, בסיס נסתר שנראה מרחף"], ["תוספת למידות", "12 ס\"מ ברוחב, 22 ס\"מ באורך"], ["שקיעת מזרן", "11 ס\"מ (8 ס\"מ עם ארגז)"], ["בסיס", "לייסטים מעץ אורן"], ["מזרן", "לא כלול"]], "status": "candidate", "storeId": "kuala", "trial": "אין ניסיון; ביטול בכל שלב עם החזר מלא", "url": "https://kualastyle.com/products/banyan?variant=47356038316187", "warranty": 5, "warrantyNote": "12 חודשים", "id": "kuala-banyan"}, {"addedAt": "2026-10-24T14:40:00Z", "cons": ["מסגרת מסיבית ולא מעץ לביד", "כל המידות הופיעו 'אזל או לא זמין'"], "delivery": "עד 30 ימי עסקים. משלוח חינם בלי הכנסה והרכבה", "height": "ראש מיטה 110 ס\"מ, מסגרת 35 ס\"מ, רגליים 5 ס\"מ", "image": "img/kuala-chunk.jpg", "kind": "bed", "looks": 6, "materials": "סיבית מרופדת קורדרוי שניל רך, רגלי ברזל שחורות", "name": "CHUNK", "price": 5355, "priceNote": "מבצע (במקום ₪7,140), כולל ארגז מצעים. בלי ארגז: ₪4,643", "pros": ["ארבעה צבעים לבחירה", "בד שניל רך למגע"], "size": "180×200, שמנת, עם ארגז מצעים", "specs": [["סגנון", "נורדי, שתי כריות ראש מרופדות"], ["צבעים", "קרם, ורוד, ירוק, כחול"], ["תוספת למידות", "14 ס\"מ ברוחב, 25 ס\"מ באורך"], ["שקיעת מזרן", "8 ס\"מ (7 עם ארגז)"], ["בסיס", "לייסטים מעץ אורן"], ["מזרן", "לא כלול"]], "status": "candidate", "storeId": "kuala", "trial": "אין ניסיון; ביטול בכל שלב עם החזר מלא", "url": "https://kualastyle.com/products/chunk?variant=47360784957595", "warranty": 5, "warrantyNote": "12 חודשים", "id": "kuala-chunk"}, {"addedAt": "2026-10-24T14:40:00Z", "cons": ["מסגרת רחבה: 2.20×2.40 מ' למזרן 180×200, לבדוק שנכנס בחדר", "כל המידות הופיעו 'אזל או לא זמין'"], "delivery": "עד 30 ימי עסקים. משלוח חינם בלי הכנסה והרכבה", "height": "ראש מיטה 100 ס\"מ, בסיס 35 ס\"מ", "image": "img/kuala-dav.jpg", "kind": "bed", "looks": 7, "materials": "ריפוד קורדרוי, שכבת נוחות אקרילית", "name": "DAV", "price": 5355, "priceNote": "מבצע (במקום ₪7,140), כולל ארגז מצעים. בלי ארגז: ₪4,643", "pros": ["מסגרת רכה מכל הכיוונים"], "size": "180×200, לבן, עם ארגז מצעים", "specs": [["סגנון", "נורדי, מסגרת רכה ותפוחה, ראש מיטה משתי כריות"], ["צבעים", "שחור, לבן"], ["תוספת למידות", "40 ס\"מ ברוחב ו-40 ס\"מ באורך (מסגרת רחבה מאוד)"], ["שקיעת מזרן", "15 ס\"מ (7 עם ארגז)"], ["ארגז מצעים", "גובה פנימי 20 ס\"מ"], ["מזרן", "לא כלול"]], "status": "candidate", "storeId": "kuala", "trial": "אין ניסיון; ביטול בכל שלב עם החזר מלא", "url": "https://kualastyle.com/products/dav?variant=47360830242971", "warranty": 5, "warrantyNote": "12 חודשים", "id": "kuala-dav"}, {"addedAt": "2026-10-24T14:40:00Z", "cons": ["הכי יקרה מבין המיטות של KUALA עד עכשיו", "מסגרת רחבה, תופסת 30 ס\"מ יותר מהמזרן", "כל המידות הופיעו 'אזל או לא זמין'"], "delivery": "עד 30 ימי עסקים. משלוח חינם בלי הכנסה והרכבה", "height": "ראש מיטה 100 ס\"מ, מסגרת 33 ס\"מ, רגליים 5 ס\"מ", "image": "img/kuala-puffy.jpg", "kind": "bed", "looks": 8, "materials": "מסגרת לביד ליבנה, ריפוד קורדרוי דק, רגלי ניקל", "name": "PUFFY", "price": 5700, "priceNote": "מבצע (במקום ₪7,600), כולל ארגז מצעים. בלי ארגז: ₪4,988", "pros": ["ראש מיטה רך במיוחד"], "size": "180×200, עם ארגז מצעים", "specs": [["סגנון", "נורדי, ראש מיטה משתי כריות גדולות ותפוחות"], ["תוספת למידות", "30 ס\"מ ברוחב, 33 ס\"מ באורך (מסגרת רחבה)"], ["שקיעת מזרן", "8 ס\"מ"], ["בסיס", "לייסטים מעץ אורן"], ["מזרן", "לא כלול"]], "status": "candidate", "storeId": "kuala", "trial": "אין ניסיון; ביטול בכל שלב עם החזר מלא", "url": "https://kualastyle.com/products/puffy?variant=47363692757147", "warranty": 5, "warrantyNote": "12 חודשים", "id": "kuala-puffy"}], "weights": {"comfort": 35, "location": 5, "looks": 20, "price": 15, "service": 20, "warranty": 5}, "builtAt": "2026-10-24T19:46"}</script>
+<script>
+(function(){
+  const CRIT=[
+    {k:'comfort',l:'נוחות',d:'הדירוג שלנו אחרי ששכבנו'},
+    {k:'looks',l:'נראות',d:'איך זה ייראה בחדר'},
+    {k:'service',l:'שירות',d:'ביקורות ויחס בחנות'},
+    {k:'price',l:'מחיר',d:'מחושב לבד מול הזול בקבוצה'},
+    {k:'warranty',l:'אחריות',d:'שנות אחריות וניסיון בבית'},
+    {k:'location',l:'מיקום',d:'כמה קל להגיע'}];
+  const DEFAULT_W={comfort:35,looks:20,service:20,price:15,warranty:5,location:5};
+  const KIND={mattress:'מזרן',bed:'מיטה',set:'מיטה + מזרן',bundle:'חבילה',combo:'שילוב'};
+  const VIEWS=[{k:'bed',l:'מיטות'},{k:'mattress',l:'מזרנים'}];
+  const NOTES={
+    mattress:'כל מזרן מדורג מול שאר המזרנים, בלי ציון כולל. הציון נקבע רק כשהוא משולב עם מיטה בדירוג למעלה.',
+    bed:'כל מיטה מדורגת מול שאר המיטות, בלי ציון כולל. הציון נקבע רק כשהיא משולבת עם מזרן בדירוג למעלה.'};
+  const RANK_NOTE='רק פתרונות מלאים: כל שילוב של מזרן ומיטה שהכנסנו, חבילות במחיר מוזל וסטים מאותה חנות. המחיר מושווה לפתרון המלא הזול ביותר.';
+  const COMBO_LIMIT=15;
+  const PILLOW_D='M92 146 C86 126 92 108 112 106 L166 104 C186 104 190 124 184 146 C160 152 116 152 92 146 Z';
+  const PILLOWS=`<svg class="pillows" viewBox="80 98 220 62" aria-hidden="true"><path class="il-pillow" d="${PILLOW_D}"/><path class="il-crease" d="M106 128 C128 132 150 130 172 125"/><g transform="translate(104 0)"><path class="il-pillow" d="${PILLOW_D}"/><path class="il-crease" d="M106 128 C128 132 150 130 172 125"/></g><rect class="il-cushion" x="168" y="116" width="58" height="42" rx="17" transform="rotate(-6 197 137)"/><circle class="il-btn" cx="197" cy="137" r="3"/></svg>`;
+  const TABS=['rank','parts','plan','method','stores'];
+  const S={tab:TABS.includes(location.hash.slice(1))?location.hash.slice(1):'rank',stores:{},items:[],weights:{...DEFAULT_W},view:'bed',sel:[],open:new Set(),db:'loading',storesSeen:false,itemsSeen:false};
+
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const num=v=>typeof v==='number'&&isFinite(v)?v:null;
+  const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+  const ils=v=>v==null?'—':'₪'+Math.round(v).toLocaleString('he-IL');
+  const one=v=>v==null?'—':(Math.round(v*10)/10).toFixed(1);
+  const safeUrl=u=>/^https?:\/\//i.test(String(u||''))?String(u):null;
+  const imgSrc=u=>/^(https:\/\/|\/(?!\/)|img\/[\w.-]+$)/i.test(String(u||''))?String(u):null;
+  const imgs=c=>c.items.map(it=>imgSrc(it.image)).filter(Boolean);
+  const ARROW='<svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M9 3L3 9M4 3h5v5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function links(c){
+    const ls=[...(c.bundle?[c.bundle]:[]),...c.items].map(it=>[it,safeUrl(it.url)]).filter(([,u])=>u);
+    if(!ls.length)return '';
+    return `<div class="links">${ls.map(([it,u])=>`<a class="site" href="${esc(u)}" target="_blank" rel="noopener">${ls.length>1?(it.kind==='bundle'?'החבילה':esc(it.name)):'לאתר'} ${ARROW}</a>`).join('')}</div>`;
+  }
+  function thumbHTML(c){
+    const us=imgs(c);
+    if(!us.length)return `<div class="thumb ph">${PILLOWS}</div>`;
+    return `<div class="thumb${us.length>1?' duo':''}">${us.map(u=>`<img src="${esc(u)}" alt="${esc(c.title)}" loading="lazy">`).join('')}</div>`;
+  }
+
+  try{const v=localStorage.getItem('bp.view');if(VIEWS.some(x=>x.k===v))S.view=v;
+      const s=JSON.parse(localStorage.getItem('bp.sel')||'[]');if(Array.isArray(s))S.sel=s.filter(x=>typeof x==='string');}catch(e){}
+  const save=()=>{try{localStorage.setItem('bp.view',S.view);localStorage.setItem('bp.sel',JSON.stringify(S.sel))}catch(e){}};
+
+  /* ---------- scoring ---------- */
+  function itemCand(it){
+    const st=S.stores[it.storeId]||{};
+    return {key:'i:'+it.id,kind:it.kind,title:it.name||'ללא שם',store:st.name||'',items:[it],price:num(it.price),
+      crit:{comfort:num(it.comfort),looks:num(it.looks),service:num(it.service)??num(st.service),
+        warranty:num(it.warranty)??num(st.warranty),location:num(st.location),price:null}};
+  }
+  function mix(x,y,wx){return x==null?y:y==null?x:x*wx+y*(1-wx)}
+  function comboCand(m,b,bundle){
+    const a=itemCand(m),c=itemCand(b),same=m.storeId===b.storeId;
+    const la=a.crit.location,lc=c.crit.location;
+    const sum=a.price!=null&&c.price!=null?a.price+c.price:null;
+    const bp=bundle?num(bundle.price):null;
+    return {key:'c:'+m.id+'+'+b.id,kind:'combo',title:a.title+' + '+c.title,
+      store:same?a.store:[a.store,c.store].filter(Boolean).join(' · '),sameStore:same,items:[m,b],bundle,sum,
+      price:bp!=null?bp:sum,
+      crit:{comfort:mix(a.crit.comfort,c.crit.comfort,.85),looks:c.crit.looks,
+        service:mix(a.crit.service,c.crit.service,.5),warranty:mix(a.crit.warranty,c.crit.warranty,.7),
+        location:la==null?lc:lc==null?la:Math.min(la,lc),price:null}};
+  }
+  function priceScores(list){
+    const ps=list.map(c=>c.price).filter(p=>p>0);if(!ps.length)return;
+    const min=Math.min(...ps);
+    list.forEach(c=>{if(c.price>0)c.crit.price=clamp(10*min/c.price,1,10)});
+  }
+  function score(c){
+    let s=0,w=0;c.miss=[];
+    CRIT.forEach(({k})=>{const wk=num(S.weights[k])||0;if(!wk)return;const v=c.crit[k];
+      if(v==null){c.miss.push(k);return}s+=v*wk;w+=wk});
+    c.total=w?s/w:null;c.partial=c.miss.length>0;
+  }
+  const byTotal=(a,b)=>(b.total??-1)-(a.total??-1)||(a.price??1e9)-(b.price??1e9);
+  function build(){
+    const its=S.items;
+    const mItems=its.filter(i=>i.kind==='mattress'),bItems=its.filter(i=>i.kind==='bed');
+    const byId=Object.fromEntries(its.map(i=>[i.id,i]));
+    // a bundle names one mattress and one bed; it prices their pairing. Without both parts it stands alone, like a set.
+    const bundles={},loose=[];
+    its.filter(i=>i.kind==='bundle').forEach(bu=>{
+      const parts=(Array.isArray(bu.components)?bu.components:[]).map(id=>byId[id]).filter(Boolean);
+      const m=parts.find(p=>p.kind==='mattress'),b=parts.find(p=>p.kind==='bed');
+      if(m&&b)bundles[m.id+'|'+b.id]=bu;else loose.push(bu);
+    });
+    const ms=mItems.map(itemCand),bs=bItems.map(itemCand);
+    priceScores(ms);priceScores(bs);[...ms,...bs].forEach(score);
+    const combos=[];
+    mItems.forEach(m=>bItems.forEach(b=>combos.push(comboCand(m,b,bundles[m.id+'|'+b.id]))));
+    const sets=[...its.filter(i=>i.kind==='set'),...loose].map(it=>({...itemCand(it),kind:'set'}));
+    const full=[...sets,...combos];priceScores(full);full.forEach(score);
+    const lists={full:full.sort(byTotal),mattress:ms.sort(byTotal),bed:bs.sort(byTotal)};
+    const index={};[...full,...ms,...bs].forEach(c=>index[c.key]=c);
+    return {lists,index};
+  }
+
+  /* ---------- render ---------- */
+  function tone(t){return t==null?'':t>=8?'hi':t>=6.5?'mid':'lo'}
+  function critCells(c){
+    const maxW=Math.max(...CRIT.map(x=>num(S.weights[x.k])||0));
+    return CRIT.map(({k,l})=>{const v=c.crit[k];const heavy=(num(S.weights[k])||0)>=maxW*.5;
+      return `<div class="crit${v==null?' na':''}${heavy?' heavy':''}"><span class="lb">${l}</span><span class="v">${v==null?(k==='comfort'||k==='looks'?'טרם':'—'):one(v)}</span><span class="bar"><i style="--v:${v==null?0:clamp(v/10,0,1)}"></i></span></div>`}).join('');
+  }
+  function val(it,f){
+    const st=S.stores[it.storeId]||{};
+    if(f==='trial')return it.trial||st.trial;
+    if(f==='warrantyNote')return it.warrantyNote||st.warrantyNote;
+    if(f==='delivery')return it.delivery||st.delivery;
+    return it[f];
+  }
+  function detailOf(it){
+    const st=S.stores[it.storeId]||{};
+    const kv=[['מידה','size'],['קשיחות','firmness'],['חומרים','materials'],['גובה','height'],['ניסיון בבית','trial'],['אחריות','warrantyNote'],['משלוח והרכבה','delivery']]
+      .map(([l,f])=>[l,val(it,f)]).filter(([,v])=>v);
+    (Array.isArray(it.specs)?it.specs:[]).forEach(p=>{if(Array.isArray(p)&&p[1])kv.push([p[0],p[1]])});
+    const url=safeUrl(it.url);
+    const pros=Array.isArray(it.pros)?it.pros:[],cons=Array.isArray(it.cons)?it.cons:[];
+    return `<div><h3>${esc(it.name)} <span class="chip k-${esc(it.kind)}">${KIND[it.kind]||''}</span></h3>
+      <p class="meta">${esc(st.name||'')}${it.priceNote?' · '+esc(it.priceNote):''}${it.visited?' · '+esc(it.visited):''}</p></div>
+      ${kv.length?`<dl class="kv">${kv.map(([l,v])=>`<div><dt>${esc(l)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`:''}
+      ${pros.length||cons.length?`<div class="pc">${pros.length?`<div class="pro"><span class="t">מה אהבנו</span><ul>${pros.map(p=>`<li>${esc(p)}</li>`).join('')}</ul></div>`:''}${cons.length?`<div class="con"><span class="t">מה פחות</span><ul>${cons.map(p=>`<li>${esc(p)}</li>`).join('')}</ul></div>`:''}</div>`:''}
+      ${it.notes?`<p class="note">${esc(it.notes)}</p>`:''}
+      ${url?`<p><a href="${esc(url)}" target="_blank" rel="noopener">לדף הדגם</a></p>`:''}`;
+  }
+  function rowHTML(c,i,part){
+    const checked=S.sel.includes(c.key);const open=S.open.has(c.key);const id='pick-'+c.key.replace(/[^a-zA-Z0-9_-]/g,'_');
+    const priceNote=c.kind!=='combo'?(c.items[0].priceNote||c.items[0].size||''):
+      c.bundle&&num(c.bundle.price)!=null?(c.sum!=null?`מחיר חבילה, במקום ${ils(c.sum)}`:'מחיר חבילה'):
+      c.items.map(it=>ils(num(it.price))).join(' + ');
+    const chips=(c.bundle?'<span class="chip k-combo">חבילה במחיר מוזל</span>':`<span class="chip k-${c.kind}">${KIND[c.kind]||''}</span>`)+
+      (c.kind==='combo'&&c.sameStore&&!c.bundle?'<span class="chip ghost">מאותה חנות</span>':'')+
+      (c.kind!=='combo'&&c.items[0].status==='candidate'?'<span class="chip ghost">עוד לא נוסה</span>':'');
+    return `<div class="entry${!part&&i===0&&c.total!=null?' top':''}">
+      <div class="row">
+        <label class="pick" for="${id}"><input type="checkbox" id="${id}" data-key="${esc(c.key)}" ${checked?'checked':''} aria-label="להשוואה: ${esc(c.title)}"></label>
+        ${thumbHTML(c)}
+        <div class="who"><div class="name"><span class="rk">${i+1}</span><span>${esc(c.title)}</span></div>
+          <div class="meta">${chips}<span>${esc(c.store)}</span></div>
+          ${links(c)}</div>
+        <div class="price">${ils(c.price)}${priceNote?`<small>${esc(priceNote)}</small>`:''}</div>
+        <div class="crits">${critCells(c)}</div>
+        ${part?`<div class="total part"><small>חלק בלבד</small><small>ציון רק בשילוב</small></div>`:
+          `<div class="total ${tone(c.total)}"><b>${one(c.total)}</b><small>${c.partial?'ציון חלקי':'מתוך 10'}</small></div>`}
+        <button class="more" type="button" data-open="${esc(c.key)}" aria-expanded="${open}" aria-label="פרטים על ${esc(c.title)}"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="detail" ${open?'':'hidden'}>${[...(c.bundle?[c.bundle]:[]),...c.items].map(detailOf).join('')}</div>
+    </div>`;
+  }
+  function emptyHTML(where){
+    if(S.db==='loading')return `<div class="empty">${PILLOWS}<p>טוען את הדגמים…</p></div>`;
+    if(S.db==='none')return `<div class="empty">${PILLOWS}<h3>הנתונים לא נטענו בתצוגה הזו</h3><p>הדגמים נשמרים במאגר של העמוד. צריך לפתוח אותו כשמחוברים ל-Claude.</p></div>`;
+    if(where==='full'){
+      const nm=S.items.filter(i=>i.kind==='mattress').length,nb=S.items.filter(i=>i.kind==='bed').length;
+      const need=!nm&&!nb?'עוד לא הוספנו דגמים.':!nm?`יש ${nb} מיטות ועוד אין מזרן.`:`יש ${nm} מזרנים ועוד אין מיטה.`;
+      return `<div class="empty">${PILLOWS}<h3>עוד אין פתרון מלא</h3><p>${need} פתרון מלא מופיע כשיש לפחות מזרן אחד ומיטה אחת, או חבילה של מיטה ומזרן.</p></div>`;
+    }
+    return `<div class="empty">${PILLOWS}<h3>אין עדיין ${S.view==='bed'?'מיטות':'מזרנים'}</h3><p>בוחרים דגם ב-KUALA או באחת החנויות, ומבקשים מ-Claude בשיחה להוסיף אותו עם המחיר והדירוג שלנו.</p></div>`;
+  }
+  function render(){
+    const {lists,index}=build();
+    const loaded=S.db==='ok'&&S.itemsSeen;
+    if(loaded)S.sel=S.sel.filter(k=>index[k]);
+    // stats
+    const dates=S.items.map(i=>i.updatedAt||i.addedAt).filter(Boolean).sort();
+    const last=dates.length?new Date(dates[dates.length-1]):null;
+    const tried=S.items.filter(i=>num(i.comfort)!=null).length;
+    $('stats').innerHTML=[
+      `<span class="stat"><b>${lists.full.length}</b> פתרונות מלאים</span>`,
+      `<span class="stat"><b>${lists.bed.length}</b> מיטות · <b>${lists.mattress.length}</b> מזרנים</span>`,
+      `<span class="stat"><b>${tried}</b> נוסו</span>`,
+      `<span class="stat"><b>${Object.keys(S.stores).length}</b> חנויות</span>`,
+      last&&!isNaN(last)?`<span class="stat">עודכן ${last.toLocaleDateString('he-IL',{day:'numeric',month:'long'})}</span>`:''].join('');
+    // views
+    let full=lists.full,rankNote=RANK_NOTE;
+    if(full.length>COMBO_LIMIT){rankNote+=` מוצגים ${COMBO_LIMIT} הטובים מתוך ${full.length}.`;full=full.slice(0,COMBO_LIMIT)}
+    $('rankNote').textContent=rankNote;
+    $('board').innerHTML=full.length?full.map((c,i)=>rowHTML(c,i,false)).join(''):emptyHTML('full');
+    $('views').innerHTML=VIEWS.map(v=>`<button type="button" role="tab" id="view-${v.k}" data-view="${v.k}" aria-selected="${S.view===v.k}">${v.l}<span class="n">${lists[v.k].length}</span></button>`).join('');
+    const part=lists[S.view];
+    $('viewNote').textContent=NOTES[S.view];
+    $('partsBoard').innerHTML=part.length?part.map((c,i)=>rowHTML(c,i,true)).join(''):emptyHTML('part');
+    renderTabs();
+    renderCompare(index);
+    renderTray(index);
+    renderPlan();
+    renderWeights();
+    renderStores();
+  }
+  const onBoard=()=>S.tab==='rank'||S.tab==='parts';
+  function renderTabs(){
+    document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===S.tab)));
+    document.querySelectorAll('[data-panel]').forEach(p=>{p.hidden=p.dataset.panel!==S.tab});
+  }
+  function wazeUrl(s){
+    const q=s.waze||[s.address,s.area].filter(Boolean).join(', ')||s.name;
+    return 'https://waze.com/ul?q='+encodeURIComponent(q)+'&navigate=yes';
+  }
+  /* hand-drawn map of the Haifa bay: equirectangular projection over a fixed box */
+  const BOX={n:32.840,s:32.765,w:34.935,e:35.095,W:1000,H:558};
+  const px=(lat,lng)=>[(lng-BOX.w)/(BOX.e-BOX.w)*BOX.W,(BOX.n-lat)/(BOX.n-BOX.s)*BOX.H];
+  const COAST=[[32.765,34.951],[32.790,34.954],[32.810,34.958],[32.825,34.966],[32.833,34.977],[32.829,34.991],[32.823,35.004],
+    [32.819,35.021],[32.813,35.037],[32.818,35.050],[32.826,35.062],[32.833,35.070],[32.840,35.074]];
+  const CARMEL=[[32.765,34.975],[32.790,34.972],[32.808,34.985],[32.815,35.000],[32.806,35.018],[32.792,35.030],[32.775,35.040],[32.765,35.042]];
+  const ZC=['var(--lav)','var(--apricot)','var(--sage)','var(--rose)'];
+  const pathOf=(pts,close)=>pts.map(([a,b],i)=>{const [x,y]=px(a,b);return (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}).join(' ')+(close?' Z':'');
+  const MAP_SVG=(()=>{
+    const coast=pathOf(COAST);
+    const sea=`M0 ${BOX.H} `+coast.replace(/^M/,'L')+' L0 0 Z';
+    const lbl=(t,lat,lng,c='')=>{const [x,y]=px(lat,lng);return `<text class="m-lbl ${c}" x="${x.toFixed(0)}" y="${y.toFixed(0)}" text-anchor="middle">${t}</text>`};
+    const waves=[[32.800,34.943],[32.822,34.950],[32.835,35.010],[32.836,35.040]].map(([a,b])=>{const [x,y]=px(a,b);return `<path class="m-wave" d="M${x-18} ${y} q9 -7 18 0 t18 0"/>`}).join('');
+    return `<svg viewBox="0 0 ${BOX.W} ${BOX.H}" aria-hidden="true"><rect class="m-land" width="${BOX.W}" height="${BOX.H}"/>
+      <path class="m-carmel" d="${pathOf(CARMEL,true)}"/><path class="m-sea" d="${sea}"/><path class="m-coast" d="${coast}"/>${waves}
+      ${lbl('הים התיכון',32.812,34.951,'sea')}${lbl('מפרץ חיפה',32.834,35.025,'sea')}${lbl('הכרמל',32.783,35.000)}${lbl('חיפה',32.817,34.990)}
+      ${lbl('הקריות',32.833,35.085,'small')}${lbl('קריית אתא',32.795,35.082,'small')}${lbl('צ׳ק פוסט',32.795,35.032,'small')}</svg>`;
+  })();
+  const zonesOf=st=>{const z=[];st.forEach(s=>{const k=s.zone||'אחר';if(!z.includes(k))z.push(k)});return z};
+  function renderMap(st,zones){
+    const pts=st.filter(s=>num(s.lat)!=null&&num(s.lng)!=null);
+    const pin=s=>{const [x,y]=px(s.lat,s.lng);const zi=zones.indexOf(s.zone||'אחר');
+      return `<button type="button" class="pin${s.visited?' done':''}" data-pin="${esc(s.id)}" aria-expanded="${S.pop===s.id}" aria-label="${esc(s.name)}"
+        style="left:${(x/BOX.W*100).toFixed(2)}%;top:${(y/BOX.H*100).toFixed(2)}%;--zc:${ZC[zi%ZC.length]}">
+        <svg viewBox="0 0 36 44"><path class="pb" d="M18 42 C18 42 3 26 3 17 A15 15 0 1 1 33 17 C33 26 18 42 18 42 Z"/><circle class="pc" cx="18" cy="17" r="8"/><text class="pn" x="18" y="21" text-anchor="middle">${zi+1}</text></svg></button>`};
+    const open=pts.find(s=>s.id===S.pop);
+    let pop='';
+    if(open){const [x,y]=px(open.lat,open.lng);const lx=x/BOX.W*100;
+      const tx=lx<22?'-12%':lx>78?'-88%':'-50%';
+      pop=`<div class="pop" role="dialog" aria-label="${esc(open.name)}" style="left:${lx.toFixed(2)}%;top:${(y/BOX.H*100).toFixed(2)}%;--tx:${tx}">
+        <b>${esc(open.name)}</b><span>${esc([open.address,open.area].filter(Boolean).join(', '))}</span><span>${esc(open.zone||'')}</span>
+        <a href="${esc(wazeUrl(open))}" target="_blank" rel="noopener">ניווט ב-Waze</a></div>`}
+    $('planMap').innerHTML=`<div class="map-canvas">${MAP_SVG}</div>${pts.map(pin).join('')}${pop}`;
+  }
+  function renderPlan(){
+    const st=Object.values(S.stores).filter(s=>!s.online).sort((a,b)=>(a.zoneOrder??99)-(b.zoneOrder??99)||(a.order??99)-(b.order??99));
+    if(!st.length){$('planMap').innerHTML='';$('planList').innerHTML=`<p class="sec-note">${S.db==='loading'?'טוען…':'אין חנויות פיזיות ברשימה.'}</p>`;return}
+    const zones=zonesOf(st);
+    renderMap(st,zones);
+    const cnt={};S.items.forEach(i=>cnt[i.storeId]=(cnt[i.storeId]||0)+1);
+    const card=s=>{const url=safeUrl(s.url);const zi=zones.indexOf(s.zone||'אחר');
+      return `<article class="stop${s.visited?' done':''}" style="--zc:${ZC[zi%ZC.length]}">
+        <h4>${esc(s.name)}</h4>
+        <p class="addr">${esc([s.address,s.area].filter(Boolean).join(', '))}${s.addressNote?`<small>${esc(s.addressNote)}</small>`:''}</p>
+        ${s.hours?`<p class="sub">${esc(s.hours)}</p>`:''}
+        ${s.phone?`<p class="sub">טלפון: <span dir="ltr">${esc(s.phone)}</span></p>`:''}
+        <p class="sub">${num(s.lat)!=null?`<a href="#" data-pin="${esc(s.id)}">על המפה</a> · `:''}${esc(s.reviews||'')}${s.visited?` · ביקרנו${s.visited!==true?' '+esc(s.visited):''} · ${cnt[s.id]||0} דגמים`:''}</p>
+        <div class="acts"><a class="waze" href="${esc(wazeUrl(s))}" target="_blank" rel="noopener">ניווט ב-Waze ${ARROW}</a>${safeUrl(s.mapUrl)?`<a class="site" href="${esc(s.mapUrl)}" target="_blank" rel="noopener">גוגל מפות ${ARROW}</a>`:''}${url?`<a class="site" href="${esc(url)}" target="_blank" rel="noopener">לאתר ${ARROW}</a>`:''}</div>
+      </article>`};
+    const todo=st.filter(s=>!s.visited),done=st.filter(s=>s.visited);
+    const groups=zones.map((z,zi)=>[z,zi,todo.filter(s=>(s.zone||'אחר')===z)]).filter(([,,l])=>l.length);
+    $('planList').innerHTML=
+      (groups.length?groups.map(([z,zi,l])=>`<div class="plan-group" style="--zc:${ZC[zi%ZC.length]}"><h3><span class="dot" aria-hidden="true"></span>${zi+1}. ${esc(z)} <span class="n">${l.length} חנויות</span></h3><div class="stops">${l.map(card).join('')}</div></div>`).join('')
+        :'<p class="sec-note">ביקרנו בכל החנויות ברשימה.</p>')+
+      (done.length?`<div class="plan-group"><h3>ביקרנו <span class="n">${done.length}</span></h3><div class="stops">${done.map(card).join('')}</div></div>`:'');
+  }
+  function renderTray(index){
+    const sel=S.sel.filter(k=>index[k]||S.db!=='ok');
+    $('tray').hidden=sel.length===0||!onBoard();
+    $('trayList').innerHTML=sel.map(k=>`<span class="chip">${esc(index[k]?index[k].title:'…')}</span>`).join('');
+    $('trayGo').disabled=sel.length<2;
+    $('trayGo').textContent=sel.length<2?'בחרו עוד אחד להשוואה':`השוואת ${sel.length}`;
+  }
+  function renderCompare(index){
+    const cs=S.sel.map(k=>index[k]).filter(Boolean);
+    const sec=$('compare');sec.hidden=cs.length<2||!onBoard();if(sec.hidden)return;
+    const best=(vals,low)=>{const ns=vals.filter(v=>v!=null);if(ns.length<2)return null;return low?Math.min(...ns):Math.max(...ns)};
+    const numRow=(label,vals,fmt,low,cls='')=>{const b=best(vals,low);
+      return `<tr class="${cls}"><th scope="row">${label}</th>${vals.map(v=>`<td class="num${b!=null&&v===b?' best':''}">${fmt(v)}</td>`).join('')}</tr>`};
+    const field=(c,f)=>{
+      if(c.kind!=='combo')return esc(val(c.items[0],f)||'—');
+      const parts=c.items.map((it,i)=>{const v=val(it,f);return v?`<b>${i?'מיטה':'מזרן'}:</b> ${esc(v)}`:''}).filter(Boolean);
+      return parts.join('<br>')||'—'};
+    const list=(c,f)=>{const all=c.items.flatMap(it=>Array.isArray(it[f])?it[f]:[]);return all.length?all.map(esc).join('<br>'):'—'};
+    const txtRow=(label,fn)=>`<tr><th scope="row">${label}</th>${cs.map(c=>`<td>${fn(c)}</td>`).join('')}</tr>`;
+    const head=`<thead><tr><th scope="col"></th>${cs.map(c=>`<th scope="col"><button class="x" type="button" data-unsel="${esc(c.key)}" aria-label="הסרה מההשוואה">×</button>${imgs(c).length?`<div class="h-img">${imgs(c).map(u=>`<img src="${esc(u)}" alt="${esc(c.title)}" loading="lazy">`).join('')}</div>`:''}<span class="h-name">${esc(c.title)}</span><span class="h-store">${KIND[c.kind]||''} · ${esc(c.store)}</span></th>`).join('')}</tr></thead>`;
+    const rows=[
+      numRow('ציון כולל',cs.map(c=>c.total==null||c.kind==='bed'||c.kind==='mattress'?null:Math.round(c.total*10)/10),v=>v==null?'—':v.toFixed(1),false,'sum'),
+      numRow('מחיר',cs.map(c=>c.price),ils,true),
+      `<tr class="group"><th scope="row">הדירוגים</th>${cs.map(()=>'<td></td>').join('')}</tr>`,
+      ...CRIT.map(({k,l})=>numRow(`${l} <span style="font-weight:400">(${num(S.weights[k])||0}%)</span>`,cs.map(c=>c.crit[k]==null?null:Math.round(c.crit[k]*10)/10),one,false)),
+      `<tr class="group"><th scope="row">הפרטים</th>${cs.map(()=>'<td></td>').join('')}</tr>`,
+      txtRow('מידה',c=>field(c,'size')),
+      txtRow('קשיחות',c=>field(c,'firmness')),
+      txtRow('חומרים',c=>field(c,'materials')),
+      txtRow('ניסיון בבית',c=>field(c,'trial')),
+      txtRow('אחריות',c=>field(c,'warrantyNote')),
+      txtRow('משלוח והרכבה',c=>field(c,'delivery')),
+      txtRow('מה אהבנו',c=>list(c,'pros')),
+      txtRow('מה פחות',c=>list(c,'cons')),
+      txtRow('הערות',c=>field(c,'notes'))];
+    $('cmpTable').innerHTML=head+'<tbody>'+rows.join('')+'</tbody>';
+  }
+  function renderWeights(){
+    const tot=CRIT.reduce((s,{k})=>s+(num(S.weights[k])||0),0)||1;
+    const max=Math.max(...CRIT.map(({k})=>num(S.weights[k])||0))||1;
+    $('weights').innerHTML=[...CRIT].sort((a,b)=>(S.weights[b.k]||0)-(S.weights[a.k]||0)).map(({k,l,d})=>{const w=num(S.weights[k])||0;
+      return `<div class="w"><span class="wl">${l}</span><span class="wb"><i style="--v:${w/max}"></i></span><span class="wn">${Math.round(w/tot*100)}%</span><span class="wd">${d}</span></div>`}).join('');
+  }
+  function renderStores(){
+    const st=Object.values(S.stores).sort((a,b)=>(a.order??99)-(b.order??99));
+    if(!st.length){$('storeList').innerHTML=`<p class="sec-note">${S.db==='loading'?'טוען…':'עוד אין חנויות ברשימה.'}</p>`;return}
+    const cnt={};S.items.forEach(i=>cnt[i.storeId]=(cnt[i.storeId]||0)+1);
+    $('storeList').innerHTML=st.map(s=>{const url=safeUrl(s.url);
+      const rows=[['ביקורות',s.reviews],['ניסיון בבית',s.trial],['אחריות',s.warrantyNote],['משלוח',s.delivery],['שעות',s.hours],['טלפון',s.phone]].filter(([,v])=>v);
+      return `<article class="store"><h3>${esc(s.name)}</h3>
+        <p class="addr">${esc([s.address,s.area].filter(Boolean).join(' · '))}</p>
+        <div class="scores"><span class="chip">שירות ${one(num(s.service))}</span><span class="chip k-bed">מיקום ${one(num(s.location))}</span><span class="chip k-set">אחריות ${one(num(s.warranty))}</span><span class="chip ghost">${cnt[s.id]||0} דגמים</span></div>
+        <dl>${rows.map(([l,v])=>`<dt>${l}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
+        ${s.notes?`<p class="note">${esc(s.notes)}</p>`:''}
+        <div class="links">${url?`<a class="site" href="${esc(url)}" target="_blank" rel="noopener">לאתר ${ARROW}</a>`:''}${safeUrl(s.mapUrl)?`<a class="site" href="${esc(s.mapUrl)}" target="_blank" rel="noopener">גוגל מפות ${ARROW}</a>`:''}</div></article>`}).join('');
+  }
+
+  /* ---------- events ---------- */
+  document.addEventListener('click',e=>{
+    const pn=e.target.closest('[data-pin]');
+    if(pn){e.preventDefault();const fromCard=pn.tagName==='A';S.pop=fromCard||S.pop!==pn.dataset.pin?pn.dataset.pin:null;renderPlan();
+      if(fromCard)$('planMap').scrollIntoView({block:'center'});return}
+    if(S.pop&&!e.target.closest('.pop')){S.pop=null;renderPlan()}
+    const t=e.target.closest('[data-tab]');if(t){S.tab=t.dataset.tab;render();window.scrollTo({top:Math.min(window.scrollY,$('tabs').closest('.tabs').offsetTop)});return}
+    const v=e.target.closest('[data-view]');if(v){S.view=v.dataset.view;save();render();return}
+    const o=e.target.closest('[data-open]');if(o){const k=o.dataset.open;S.open.has(k)?S.open.delete(k):S.open.add(k);render();return}
+    const u=e.target.closest('[data-unsel]');if(u){S.sel=S.sel.filter(k=>k!==u.dataset.unsel);save();render();return}
+  });
+  document.addEventListener('change',e=>{
+    const k=e.target.dataset&&e.target.dataset.key;if(!k)return;
+    S.sel=e.target.checked?[...S.sel.filter(x=>x!==k),k]:S.sel.filter(x=>x!==k);save();render();
+  });
+  $('trayGo').addEventListener('click',()=>$('compare').scrollIntoView({block:'start'}));
+  $('trayClear').addEventListener('click',()=>{S.sel=[];save();render()});
+
+  /* ---------- data ---------- */
+  window.bedPicker={load(stores,items,weights){S.db='ok';S.itemsSeen=true;S.stores=Object.fromEntries(stores.map(s=>[s.id,s]));S.items=items;if(weights)S.weights={...DEFAULT_W,...weights};render()}};
+  render();
+  // a static copy (GitHub Pages) carries its data inline instead of the artifact store
+  const snap=document.getElementById('snapshot');
+  if(snap){try{const d=JSON.parse(snap.textContent);window.bedPicker.load(d.stores,d.items,d.weights)}catch(e){S.db='none';render()}}
+  else (async()=>{
+    let db=null;
+    try{db=window.claude&&window.claude.use?await window.claude.use('db'):null}catch(e){db=null}
+    if(!db){if(S.db==='loading'){S.db='none';render()}return}
+    S.db='ok';
+    const fail=()=>{};
+    db.collection('stores').onSnapshot(s=>{S.storesSeen=true;S.stores=Object.fromEntries(s.docs.map(d=>[d.id,{...d.data(),id:d.id}]));render()},fail);
+    db.collection('items').onSnapshot(s=>{S.itemsSeen=true;S.items=s.docs.map(d=>({...d.data(),id:d.id}));render()},fail);
+    db.doc('config/weights').onSnapshot(d=>{S.weights={...DEFAULT_W,...(d.exists?d.data():{})};render()},fail);
+  })();
+})();
+</script>
+
+</body>
+</html>
